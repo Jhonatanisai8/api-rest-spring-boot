@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -32,5 +33,19 @@ public class ManufactureController {
             return ResponseEntity.ok(manufactureDTO);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @RequestMapping(path = "/find-all", method = RequestMethod.GET)
+    public ResponseEntity<?> findAll() {
+        List<Manufacture> finManufactures = manufactureService.findAll();
+        List<ManufactureDTO> listaManufactureDTOS = finManufactures.stream()
+                .map(manufacture ->
+                        ManufactureDTO.builder()
+                                .idManufacture(manufacture.getIdManufacture())
+                                .manufacturer(manufacture.getManufacturer())
+                                .productList(manufacture.getProductList())
+                                .build()
+                ).toList();
+        return ResponseEntity.ok(listaManufactureDTOS);
     }
 }
