@@ -1,5 +1,6 @@
 package com.microservice.estudiantes.demoapisrest.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,5 +27,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "id_fabricante", nullable = false)
+    @JsonIgnore
     private Manufacture manufacture;
 }

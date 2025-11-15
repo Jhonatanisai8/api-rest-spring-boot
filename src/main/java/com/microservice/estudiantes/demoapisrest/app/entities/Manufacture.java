@@ -1,5 +1,6 @@
 package com.microservice.estudiantes.demoapisrest.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Manufacture {
     private String manufacturer;
 
     @OneToMany(mappedBy = "manufacture", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnore
     private List<Product> productList = new ArrayList<>();
 
 }
