@@ -1,4 +1,4 @@
-package com.microservice.estudiantes.demoapisrest.app.persitence;
+package com.microservice.estudiantes.demoapisrest.app.services;
 
 import com.microservice.estudiantes.demoapisrest.app.entities.Product;
 
@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface IProductDAO {
-
+public interface IProductService {
     Optional<Product> findById(Long id);
 
     List<Product> findAll();

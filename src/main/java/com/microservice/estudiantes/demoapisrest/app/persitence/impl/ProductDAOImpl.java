@@ -6,7 +6,6 @@ import com.microservice.estudiantes.demoapisrest.app.repository.ProductRepositor
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
