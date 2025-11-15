@@ -37,15 +37,13 @@ public class ManufactureController {
 
     @RequestMapping(path = "/find-all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
-        List<Manufacture> finManufactures = manufactureService.findAll();
-        List<ManufactureDTO> listaManufactureDTOS = finManufactures.stream()
+        return ResponseEntity.ok(manufactureService.findAll().stream()
                 .map(manufacture ->
                         ManufactureDTO.builder()
                                 .idManufacture(manufacture.getIdManufacture())
                                 .manufacturer(manufacture.getManufacturer())
                                 .productList(manufacture.getProductList())
                                 .build()
-                ).toList();
-        return ResponseEntity.ok(listaManufactureDTOS);
+                ).toList());
     }
 }
